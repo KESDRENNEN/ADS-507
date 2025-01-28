@@ -1,0 +1,25 @@
+# Python
+venv/
+__pycache__/
+*.pyc
+
+# Environment variables
+config/.env
+
+# Data
+data/raw/
+data/processed/
+
+# Logs
+logs/
+
+# Tests
+.pytest_cache/
+coverage.xml
+
+# VS Code
+.vscode/
+
+# OS Files
+.DS_Store
+Thumbs.db
