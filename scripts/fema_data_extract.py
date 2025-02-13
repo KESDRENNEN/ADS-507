@@ -8,7 +8,7 @@ base_url = "https://www.fema.gov/api/open/v2/DisasterDeclarationsSummaries"
 params = {
     "$filter": "state eq 'CA'",  # Example: Filter for disasters in California
     "$top": 1000,
-    "$skip": 0,  # 
+    "$skip": 0,  #
 }
 
 # List to store all results
