@@ -1,4 +1,4 @@
-#!/Users/mattammirati/Documents/bls_data_pipeline/ADS-507/airflow_venv/bin/python3.11
+#!/Users/mammajamma/Desktop/507Project/ADS-507/airflow_venv/bin/python3
 
 import sys
 import json

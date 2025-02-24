@@ -3,16 +3,19 @@ from airflow import DAG
 from airflow.operators.python import PythonOperator
 import boto3
 import os
+import sys
+
+sys.path.insert(0, '/Users/mammajamma/Desktop/507Project/ADS-507/airflow_home/dags')
 
 # Import extraction functions
-from mock_extract_fema_dag import extract_fema_data  # FEMA Extraction
-from mock_extract_bls_dag import run_bls_extraction
-from mock_extract_climate_dag import extract_climate_data
+from files_for_dags.mock_extract_fema_dag import extract_fema_data  # FEMA Extraction
+from files_for_dags.mock_extract_bls_dag import run_bls_extraction
+from files_for_dags.mock_extract_climate_dag import extract_climate_data
 
 # Import transformation functions
-from mock_fema_transform_dag import transform_fema_data  # FEMA Transformation
-from mock_bls_transform_dag import transform_bls_data
-from mock_climate_transform_dag import transform_climate_data
+from files_for_dags.mock_fema_transform_dag import transform_fema_data  # FEMA Transformation
+from files_for_dags.mock_bls_transform_dag import transform_bls_data
+from files_for_dags.mock_climate_transform_dag import transform_climate_data
 
 # AWS S3 Configuration
 BUCKET_NAME = "507etlbucketbeforedb"
@@ -100,4 +103,13 @@ with DAG(
     )
 
     # Define dependencies
-    [extract_fema_task, extract_bls_task, extract_climate_task] >> [transform_fema_task, transform_bls_task, transform_climate_task] >> upload_s3_task
+    # Set dependencies between extraction tasks and transformation tasks
+extract_fema_task >> transform_fema_task
+extract_bls_task >> transform_bls_task
+extract_climate_task >> transform_climate_task
+
+# Set dependencies between transformation tasks and the upload task
+transform_fema_task >> upload_s3_task
+transform_bls_task >> upload_s3_task
+transform_climate_task >> upload_s3_task
+
