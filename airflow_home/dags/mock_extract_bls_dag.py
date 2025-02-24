@@ -76,10 +76,9 @@ def save_data(df, filename='bls_data.csv'):
 
 def run_bls_extraction():
     """
-    This function encapsulates the complete extraction process.
-    It defines the series IDs and parameters, fetches the data, and saves it.
+    Runs the BLS extraction process and returns a DataFrame.
+    This function no longer saves a CSV file, so it can pass data to Airflow dynamically.
     """
-    # Define your series IDs
     series_ids = [
         "LAUMT063108000000003",
         "LAUMT063108000000004",
@@ -92,7 +91,10 @@ def run_bls_extraction():
 
     # Fetch data from the BLS API
     df = fetch_bls_data(series_ids, start_year, end_year, api_key)
+
     if df is not None and not df.empty:
-        save_data(df)
+        print("BLS data extracted successfully.")
+        return df  # Returning the DataFrame for Airflow
     else:
-        print("No data to save.")
+        print("No data extracted.")
+        return None

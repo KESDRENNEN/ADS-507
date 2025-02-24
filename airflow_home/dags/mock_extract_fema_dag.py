@@ -1,12 +1,10 @@
-# This is a mock file for what it will look like extract.py once the full DAG is implemented
-
 import requests
 import pandas as pd
 
-def extract_fema_data():
+def extract_fema_data(**kwargs):
     """
     Pulls data from the FEMA API for disasters in CA,
-    paginates until no more results, then saves to CSV.
+    paginates until no more results, and returns a DataFrame for Airflow.
     """
     base_url = "https://www.fema.gov/api/open/v2/DisasterDeclarationsSummaries"
     params = {
@@ -37,8 +35,8 @@ def extract_fema_data():
     # Convert to DataFrame
     fema_df = pd.DataFrame(all_results)
 
-    # Save locally
-    fema_df.to_csv("fema_disaster_data.csv", index=False)
+    # Push data to XCom
+    ti = kwargs['ti']
+    ti.xcom_push(key="fema_data", value=fema_df.to_json())
 
-    print("Data saved to fema_disaster_data.csv!")
     print(f"Total records retrieved: {len(fema_df)}")
