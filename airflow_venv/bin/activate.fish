@@ -29,7 +29,7 @@ end
 # Unset irrelevant variables.
 deactivate nondestructive
 
-set -gx VIRTUAL_ENV "/Users/mammajamma/Desktop/507Project/ADS-507/airflow_venv"
+set -gx VIRTUAL_ENV "/Users/mammajamma/Desktop/507Project/ADS-507_New/airflow_venv"
 
 set -gx _OLD_VIRTUAL_PATH $PATH
 set -gx PATH "$VIRTUAL_ENV/bin" $PATH

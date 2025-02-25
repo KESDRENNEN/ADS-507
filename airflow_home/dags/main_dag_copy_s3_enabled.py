@@ -5,7 +5,12 @@ import boto3
 import os
 import sys
 
-sys.path.insert(0, '/Users/mammajamma/Desktop/507Project/ADS-507/airflow_home/dags')
+correct_path = '/Users/mammajamma/Desktop/507Project/ADS-507_New/airflow_home/files_for_dags'
+sys.path.insert(0, correct_path)
+
+# Debug: Print the path
+print(f"Added to sys.path: {correct_path}")
+print(f"Current sys.path: {sys.path}")
 
 # Import extraction functions
 from files_for_dags.mock_extract_fema_dag import extract_fema_data  # FEMA Extraction

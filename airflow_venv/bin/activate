@@ -37,7 +37,7 @@ deactivate () {
 # unset irrelevant variables
 deactivate nondestructive
 
-VIRTUAL_ENV="/Users/mammajamma/Desktop/507Project/ADS-507/airflow_venv"
+VIRTUAL_ENV="/Users/mammajamma/Desktop/507Project/ADS-507_New/airflow_venv"
 export VIRTUAL_ENV
 
 _OLD_VIRTUAL_PATH="$PATH"
