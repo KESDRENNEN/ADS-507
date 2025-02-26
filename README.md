@@ -56,3 +56,15 @@ Key Features
   * Has the ability to include other economic or social impact indicators
  
 *****
+
+Current Limitations
+--
+
+* **Autiomations** : Airflow DAG failures sue to import errors and AWS permissions
+  * Airflow will need debugging to seamless execution
+    
+* **Dataset** : FEMA and BLS data are pulled from LA County while the climate data encompassess the United States as a whole
+  * Will need to expand locations
+    
+* **Temporal** : Climate data is available annually, while disaster data has more granular timestamps
+  * disaster impacts need to be analyzed at a more localized level
