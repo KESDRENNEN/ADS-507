@@ -57,10 +57,24 @@ Key Features
  
 *****
 
+Deployment Method
+--
+
+
+
+*****
+
+Monitoring
+--
+
+
+
+*****
+
 Current Limitations
 --
 
-* **Autiomations** : Airflow DAG failures sue to import errors and AWS permissions
+* **Automations** : Airflow DAG failures sue to import errors and AWS permissions
   * Airflow will need debugging to seamless execution
     
 * **Dataset** : FEMA and BLS data are pulled from LA County while the climate data encompassess the United States as a whole
