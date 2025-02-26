@@ -59,14 +59,14 @@ Key Features
 
 Deployment Method
 --
-
+*This repository implements an ETL pipeline where Apache Airflow orchestrates the ingestion of data from three distinct sources into Amazon S3 before loading the processed data into Amazon RDS. A Jupyter Notebook then connects to RDS to generate visualizations and derive insights. The entire pipeline is containerized using Docker, ensuring a consistent and reproducible environment across both development and production. For local development, Docker Compose is used to deploy Airflow, Jupyter, and other required services, while in production, these containers can be deployed on managed platforms such as AWS ECS or Kubernetes. This approach simplifies testing, scaling, and maintenance as your data needs evolve.
 
 
 *****
 
 Monitoring
 --
-
+*This repository includes a robust monitoring and scaling strategy to ensure reliable and efficient operations. We leverage the Apache Airflow UI to track DAG executions in real time, providing clear visibility into running, successful, or stalled tasks. Although full implementation of these tools was limited by time constraints, our approach is designed to proactively address issues. In production, AWS Auto Scaling groups are configured for our EC2 instances to automatically adjust the number of worker nodes based on metrics such as CPU and memory usage, allowing us to handle increased workloads without manual intervention. Additionally, we plan to utilize Amazon CloudWatch to monitor resource usage and trigger alarms—via Amazon SNS—whenever thresholds are exceeded or tasks fail. Together, these features ensure that our pipeline maintains optimal performance and quickly responds to any operational challenges.
 
 
 *****
@@ -74,7 +74,7 @@ Monitoring
 Current Limitations
 --
 
-* **Automations** : Airflow DAG failures sue to import errors and AWS permissions
+* **Automations** : Airflow DAG failures Due to import errors and AWS permissions
   * Airflow will need debugging to seamless execution
     
 * **Dataset** : FEMA and BLS data are pulled from LA County while the climate data encompassess the United States as a whole
